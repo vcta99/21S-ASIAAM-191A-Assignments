@@ -1,12 +1,7 @@
-## Due Thursday 4/8:
+lab1.md
 
-1.  Calculate a new field using already existing fields in the `CA_Counties_2019.shp` dataset or another dataset of your choosing.
+1. I used the "Total Population" and "White Population" fields to determine what percentage of a given county was white. I called this field "White Overrepresented". Using the county stats, I determined that white folk make up 59.7% of California's total population. I filtered my "White Overrepresented" column to only show counties where white populations made up over 59.7% of the county's total population.
 
-2. Create a geojson named `lab1.geojson` and add it to your repository.
+2. I used those field because I wanted to better unederstand which counties were homogenously white. I thought that using a percentage ratio rather than a total, and comparing that ratio against the state average, would give me better insight on how the county compares to the state.
 
-3. Create a new markdown file called `lab1.md` and explain the following:
-   -  What fields you used
-   -  Why you used these fields
-   -  What problems could the data set have
-4. Commit both `lab1.geojson` and `lab1.md` to your repository and push it to GitHub.
-5. Fill out this form so I can associate you with your GitHub repo: [https://forms.gle/J8kebeHEd5xbGaiRA](https://forms.gle/J8kebeHEd5xbGaiRA)
+3. The data set does not includ Latin American as a racial category. Because the data set doesn not account for non-white hispanics, I think that the white population may be overrepresented.
