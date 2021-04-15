@@ -4,25 +4,44 @@
         <title>Hello World with Leaflet</title>
         <meta charset="utf-8" />
         <link rel="shortcut icon" href="#">
-
         <!-- I'd add some style if here if I had any -->
+        <link rel="stylesheet" href="style/style.css">
+        <script>
+            console.log('Hello Asian Am 191! :)')
+        </script>
+        <!-- Leaflet's css-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
+        <!-- Leaflet's JavaScript-->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <script src="./js/lab1.js"></script>
     </head>
     
     <body>
         <header>
-            Hello World!
+            <img src="it_me.png" alt="A digital illustration of me, Vanessa Ta.">
+            <h1>Hello World.<br>I'm Vanessa Ta and<br> I'm two letters short <br>of being tall.</h1>
+            
         </header>
         
         <div class="main">
-        <!-- hint: majority of your lab assignment can go here     -->
-        
+            <h2>✨ About Me ✨</h2>
+            <p>You know that old joke about two young fish swimming in the ocean. An older fish passes by and says “Morning, boys. How’s the water?” And the two young fish swim on for a bit, and then eventually one of them looks over at the other and goes “What the hell is water?” <br><br> I relate to that young fish more than I've related to anything in my life, and I think that informs a lot about how I view and my goals for this class and for my education in general. I want to be able to think critically about the spaces that I occupy and how those spaces can be hostile to others. I want to figure out what I'm swimming in. <br><br>Here are some fun facts about me:</p>
+            <ul>
+                <li>I'm fun and that's a fact 👉😎👉</li>
+                <li>I'm 4' 11" which is a little context for the "two letters short" joke in the header</li>
+                <li>Halloween is my favorite holiday! <a href="https://www.instagram.com/p/CG0-WvPF1R3/"><br>See what I dressed up as last year~</a></li>
+                <li>I am a big fan of Jack Antonoff.</li>
+                <li>I used to be on Foundations. <a href="https://www.youtube.com/watch?v=WpY02nar23Y">Here's my team's set!</a></li>
+            </ul>
+            <h2>My Map</h2>
         </div>
-
-
+        <div id="map"></div>
         <div id="footer">
-Copyright(2021)
+            Copyright(2021)
         </div>
         
     </body>
+
+    <script src="./js/init.js"></script>
 </html>
