@@ -8,7 +8,7 @@ body{
     grid-area: contentspanel;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 80px;
+    grid-template-rows: 50px;
 }
 
 h1 {
