@@ -1,4 +1,4 @@
-const map = L.map('map').setView([34.0709, -118.444], 5);
+const map = L.map('map').setView([34.0709, -118.444], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -7,7 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 function addMarker(data){
         // console.log(data)
         // these are the names of our fields in the google sheets:
-        createButtons(data.lat,data.lng,data.location)
+        createButtons(data.lat,data.lng,data.vibecheck)
         L.marker([data.lat,data.lng]).addTo(map).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`)
         return data.timestamp
 }
