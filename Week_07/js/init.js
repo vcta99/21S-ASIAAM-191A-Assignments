@@ -1,29 +1,16 @@
-const map = L.map('map').setView([34.0709, -118.444], 5);
-
-const url = "https://spreadsheets.google.com/feeds/list/1upD99bKWIO68jL8MKWV67KE-_H_TVn2bCwqyQkqNsBw/oxw5dh3/public/values?alt=json"
-
+const map = L.map('map').setView([34.0709, -118.444], 11);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-fetch(url)
-	.then(response => {
-		return response.json();
-		})
-    .then(data =>{
-                // console.log(data)
-                formatData(data)
-        }
-)
-
-let speakFluentEnglish = L.featureGroup();
-let speakOtherLanguage = L.featureGroup();
+let forTheCoffee = L.featureGroup();
+let forTheRomance = L.featureGroup();
 
 
 let layers = {
-    "English": speakFluentEnglish,
-    "Non-English": speakOtherLanguage,
+    "For The Coffee": forTheCoffee,
+    "For The Romance": forTheRomance,
 }
 
 let circleOptions = {
@@ -36,42 +23,53 @@ let circleOptions = {
 }
 
 L.control.layers(null,layers).addTo(map);
+
 function addMarker(data){
-    if(data.doyouspeakenglishfluently == "Yes"){
-        speakFluentEnglish.addLayer(L.marker([data.lat,data.lng]).bindPopup(`<h2>Speaks English fluently</h2>`))
-        createButtons(data.lat,data.lng,data.location)
-    }
-    else{
-        speakOtherLanguage.addLayer(L.marker([data.lat,data.lng]).bindPopup(`<h2>Speak other languages</h2>`))
-        createButtons(data.lat,data.lng,data.location)   
-        // Bonus:    
-        // speakOtherLanguage += 1
-    }
-    return data.timestamp
+        // console.log(data)
+        // these are the names of our fields in the google sheets:
+        if(data.whyareyourecommendingthiscoffeeshop == "for the coffee"){
+          circleOptions.fillColor = "#4a2c2a"
+          forTheCoffee.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
+          createButtons(data.lat,data.lng,data.CoffeeShop)
+          return data.timestamp
+        }
+        else {
+          circleOptions.fillColor = "#4a2c2a"
+          forTheRomance.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
+          createButtons(data.lat,data.lng,data.CoffeeShop)
+          return data.timestamp
+        }
+
 }
-
-
-// let speakOtherLanguage = 0
-//window.onload = function afterWebPageLoad() { 
-    //document.body.append("Number of hidden records:"+speakOtherLanguage)
-
-
 
 function createButtons(lat,lng,title){
-    const newButton = document.createElement("button");
-    newButton.id = "button"+title;
-    newButton.innerHTML = title;
-    newButton.setAttribute("lat",lat); 
-    newButton.setAttribute("lng",lng);
+    const newButton = document.createElement("button"); // adds a new button
+    newButton.id = "button"+title; // gives the button a unique id
+    newButton.innerHTML = title; // gives the button a title
+    newButton.setAttribute("lat",lat); // sets the latitude 
+    newButton.setAttribute("lng",lng); // sets the longitude 
     newButton.addEventListener('click', function(){
-        map.flyTo([lat,lng]);
+        map.flyTo([lat,lng]); //this is the flyTo from Leaflet
     })
-    const spaceForButtons = document.getElementById('contents')
-    spaceForButtons.appendChild(newButton);
+    const spaceForButtons = document.getElementById("contents")
+    spaceForButtons.appendChild(newButton); //this adds the button to our page.
 }
 
+let url = "https://spreadsheets.google.com/feeds/list/1mg4IqOpE7w6xG-LQHDnwEEpPRp-_pEhmd3roaZ4lFpk/ocb5qt5/public/values?alt=json"
+
+fetch(url)
+	.then(response => {
+		return response.json();
+		})
+    .then(data =>{
+                // console.log(data)
+                formatData(data)
+        }
+)
+
+
 function formatData(theData){
-        const formattedData = []
+        const formattedData = [] /* this array will eventually be populated with the contents of the spreadsheet's rows */
         const rows = theData.feed.entry
         for(const row of rows) {
           const formattedRow = {}
@@ -83,10 +81,18 @@ function formatData(theData){
           formattedData.push(formattedRow)
         }
         console.log(formattedData)
-        formattedData.forEach(addMarker)  
-        speakFluentEnglish.addTo(map)
-        speakOtherLanguage.addTo(map)  
-        let allLayers= L.featureGroup([speakFluentEnglish,speakOtherLanguage]);    
-        map.fitBounds(allLayers.getBounds());
+        formattedData.forEach(addMarker)        
 }
+
+
+const faveDrinks = ['matcha','latte','mocha','decaf']
+function myFunction(data, faveDrinks) {
+    for (const drink of faveDrinks){
+        console.log ("I love drinking" + drink + "at" + data.coffeeshop);
+        }
+  }
+
+
+console.log('hi albert i am sorry if this lab is wrong')
+
 
