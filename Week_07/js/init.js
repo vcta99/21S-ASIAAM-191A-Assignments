@@ -28,13 +28,13 @@ function addMarker(data){
         // console.log(data)
         // these are the names of our fields in the google sheets:
         if(data.whyareyourecommendingthiscoffeeshop == "for the coffee"){
-          circleOptions.fillColor = "brown"
+          circleOptions.fillColor = "#b07c3e"
           forTheCoffee.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
           createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
         }
         else {
-          circleOptions.fillColor = "red"
+          circleOptions.fillColor = "800000"
           forTheRomance.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
           createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
