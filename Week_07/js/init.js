@@ -15,7 +15,7 @@ let layers = {
 
 let circleOptions = {
     radius: 4,
-    fillColor: "#ff7800",
+    fillColor: "#800000",
     color: "#000",
     weight: 1,
     opacity: 1,
@@ -28,13 +28,13 @@ function addMarker(data){
         // console.log(data)
         // these are the names of our fields in the google sheets:
         if(data.whyareyourecommendingthiscoffeeshop == "for the coffee"){
-          circleOptions.fillColor = "#4a2c2a"
+          circleOptions.fillColor = "brown"
           forTheCoffee.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
           createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
         }
         else {
-          circleOptions.fillColor = "#4a2c2a"
+          circleOptions.fillColor = "red"
           forTheRomance.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
           createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
