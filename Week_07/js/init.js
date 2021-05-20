@@ -30,13 +30,13 @@ function addMarker(data){
         if(data.whyareyourecommendingthiscoffeeshop == "for the coffee"){
           circleOptions.fillColor = "#4a2c2a"
           forTheCoffee.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
-          createButtons(data.lat,data.lng,data.CoffeeShop)
+          createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
         }
         else {
           circleOptions.fillColor = "#4a2c2a"
           forTheRomance.addLayer(L.circleMarker([data.lat,data.lng]).bindPopup(`<h2>${data.coffeeshop}</h2> <p>${data.story}</>`))
-          createButtons(data.lat,data.lng,data.CoffeeShop)
+          createButtons(data.lat,data.lng,data.coffeeshop)
           return data.timestamp
         }
 
